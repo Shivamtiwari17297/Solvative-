@@ -1,0 +1,12 @@
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y apache2
+
+# Copy the web application files to the Apache2 web directory
+COPY ./my-web-app /var/www/html/
+
+EXPOSE 80
+
+# Start Apache2 in the foreground
+CMD ["apachectl", "-D", "FOREGROUND"]
+
